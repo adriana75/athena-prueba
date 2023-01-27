@@ -12,12 +12,16 @@ const app = (0, express_1.default)();
 const port = process.env.PORT || 8000;
 //Define the first Route of APP
 app.get('/', (req, res) => {
-    //Send Hello Word
-    res.send('Welcome APP API Restful: Express + TS + Swagger + Mongoose');
+    //Send 200 json
+    res.status(200).json({
+        "message": "Goodbye, world"
+    });
 });
-app.get('/hello', (req, res) => {
-    //Send Hello Word
-    res.send('Get Hello');
+app.get('/hello/:nombre', (req, res) => {
+    let nombre = req.params.nombre;
+    res.status(200).json({
+        "message": `Hola, ${nombre}`
+    });
 });
 app.listen(port, () => {
     console.log(`Express server. Running at http://localhost:${port}`);

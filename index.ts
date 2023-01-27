@@ -11,14 +11,22 @@ const port: string | number = process.env.PORT || 8000
 //Define the first Route of APP
 app.get('/', (req: Request, res: Response) =>{
 
-    //Send Hello Word
-    res.send('Welcome APP API Restful: Express + TS + Swagger + Mongoose')
+    //Send 200 json
+    res.status(200).json(
+        {
+            "message": "Goodbye, world"
+        }
+    )
 })
 
-app.get('/hello', (req: Request, res: Response) =>{
+app.get('/hello/:nombre', (req: Request, res: Response) =>{
 
-    //Send Hello Word
-    res.send('Get Hello')
+    let nombre = req.params.nombre;
+    res.status(200).json(
+        {
+            "message": `Hola, ${nombre}`
+        }
+    )
 })
 
 
